@@ -1,0 +1,20 @@
+{
+  "name": "know-your-flowers",
+  "version": "1.0.0",
+  "description": "know the type of a flower by posting an image of it",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/souvikmaji/know-your-flowers.git"
+  },
+  "author": "souvik",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/souvikmaji/know-your-flowers/issues"
+  },
+  "homepage": "https://github.com/souvikmaji/know-your-flowers#readme"
+}
