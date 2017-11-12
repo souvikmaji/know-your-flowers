@@ -1,9 +1,83 @@
-<!DOCTYPE html>
-<html>
+<DOCTYPE html>
 
-<body>
-  <h1>Know your flowers</h1>
-  <p>I love flowers!</p>
+
+
+<head>
+<title>Know Your Flower</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body onload="readURL()">
+<h1>Know Your Flower!</h1>
+
+<div class="col-lg-4">
+</div>
+<div class="col-lg-4">
+<img id="blah" class="photo"/>
+<p id="demo"></p>
+<input type="file" id="myimage">
+<button id="cent" onclick="readURL()" class="button button1">Preview
+<span class="glyphicon glyphicon-film"></span></button>
+<button id="cent" onclick="myFunction" class="button button2">Search
+<span class="glyphicon glyphicon-search"></span>
+</button>
+</div>
+
+
+    
+<script>
+function myFunction(){
+    
+    
+}
+function readURL() {
+	var input = document.getElementById("myimage");
+	var file = input.files[i];
+        var txt = "";
+    if ('files' in input) {
+        if (input.files.length == 0) {
+            txt = "Upload Your Image";
+        } else {
+            for (var i = 0; i < input.files.length; i++) {
+                txt += " ";
+                var file = input.files[i];
+                if ('name' in file) {
+                    txt += "name: " + file.name + "<br>";
+                }
+                if ('size' in file) {
+                    txt += "size: " + file.size + " bytes <br>";
+                }
+            }
+        }
+    } 
+    else {
+        if (input.value == "") {
+            txt += " ";
+        } else {
+            txt += "The files property is not supported by your browser!";
+            txt  += "<br>The path of the selected file: " + input.value; // If the browser does not support the files property, it will return the path of the selected file instead. 
+        }
+    }
+   
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+	document.getElementById("demo").innerHTML = txt;
+    }
+
+   
+</script>
+
+
+
 </body>
-
 </html>
