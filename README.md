@@ -2,8 +2,8 @@
 Post a flower image, and see what type of a flower it is.
 
 ## Start Server:
+Use `export GOOGLE_APPLICATION_CREDENTIALS='path/to/google/creds'` to locate google cloud credential file required by `@google-cloud/vision`.
+
   `npm Start`
 
 Visit `localhost:8080`
-##User Interface:
-Open Flower UI File in Browser, click "browse" to upload, "preview" to preview the file, "Search" to submit the query.
