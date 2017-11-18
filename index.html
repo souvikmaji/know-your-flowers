@@ -18,15 +18,18 @@
     <div class="col-lg-4">
       <img id="blah" class="photo" />
       <p id="demo"></p>
+     
+      <p id="some"></p>
+
       <input type="file" id="myimage">
       <button id="cent" onclick="readURL()" class="button button1">Preview
 <span class="glyphicon glyphicon-film"></span></button>
-      <button id="cent" onclick="myFunction" class="button button2">Search
+      <button id="cent" onclick="loadDoc()" class="button button2">Search
 <span class="glyphicon glyphicon-search"></span>
 </button>
     </div>
 
-
+ <p id="user_response"></p>
 
     <script>
     function myFunction() {}
@@ -68,6 +71,24 @@ function readURL() {
     reader.readAsDataURL(input.files[0]);
   }
   document.getElementById("demo").innerHTML = txt;
+}
+
+function loadDoc() {
+
+  var input = document.getElementById("myimage");
+  var xhttp = new XMLHttpRequest();
+
+  xhttp.onreadystatechange = function() {
+if (this.readyState == 4 && this.status == 200) {
+	
+      document.getElementById("user_response").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("POST", "http://localhost:8080/", true);
+ 
+  xhttp.send();
+
 }
 </script>
 
