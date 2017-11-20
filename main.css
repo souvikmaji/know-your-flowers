@@ -59,10 +59,9 @@ h1 {
   font-size: 50px
 }
 
-.image-upload > input
+.photo >input
 {
-    display: none;
+display:none;
 }
-
 
 

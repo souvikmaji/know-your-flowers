@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
 
-  <body onload="readURL()">
+  <body>
     <h1>Know Your Flower!</h1>
 
     <div class="col-lg-4">
@@ -34,7 +34,7 @@
     
 	
       
-      <button id="cent" onclick="loadDoc()" class="button button2">Search
+      <button id="cent" onclick="" class="button button2">Search
 <span class="glyphicon glyphicon-search"></span>
 </button>
     </div>
@@ -82,6 +82,7 @@ function readURL() {
     reader.readAsDataURL(input.files[0]);
   }
   document.getElementById("demo").innerHTML = txt;
+loadDoc();
 }
 
 function loadDoc() {
