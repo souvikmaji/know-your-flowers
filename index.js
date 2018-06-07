@@ -36,8 +36,20 @@ router.get("/main.css", function(req, res) {
   });
 });
 
-router.get("/ok.jpg", function(req, res) {
-  fs.readFile("ok.jpg", function(err, data) {
+// router.get("/ok.jpg", function(req, res) {
+//   fs.readFile("ok.jpg", function(err, data) {
+//     if (err) {
+//       res.writeHead(404, { "Content-Type": "text/html" });
+//       return res.end();
+//     }
+//     res.writeHead(200, { "Content-Type": "image/jpg" });
+//     res.write(data);
+//     return res.end();
+//   });
+// });
+
+router.get("/upload.png", function(req, res) {
+  fs.readFile("upload.png", function(err, data) {
     if (err) {
       res.writeHead(404, { "Content-Type": "text/html" });
       return res.end();
@@ -49,55 +61,31 @@ router.get("/ok.jpg", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-console.log("reached");
   var imageSrc,
     reply = {};
-	reply.response = "Flower";
- 	res.writeHead(200, { "Content-Type": "text/html" });
+  // reply.response = "Flower";
+  // res.writeHead(200, { "Content-Type": "text/html" });
+  //
+  // //return res.write("Shall I");
+  //
+  // res.write(reply.response);
+  // res.end();
 
-	//return res.write("Shall I");
+  req.on("data", function(data) {
+    imageSrc += data;
+  });
 
-	
-     res.write(reply.response);
-	res.end();
-
- // req.on("data", function(data) {
-   // imageSrc += data;});
-
-  //req.on("end", function() {
-    //const imgBuffer = new Buffer(imageSrc, "binary").toString("base64");
-    //fs.writeFile("output2.txt", imgBuffer, function(err) {
-      //if (err) {
-        //return console.log(err);
-      //}
-      //console.log("The file was saved!");
-    //});
-    //var request = {
-      //image: { content: imgBuffer },
-      //features: [
-        //{
-          //type: "WEB_DETECTION",
-          //maxResults: 1
-        //}
-      //]
-   // };
-    // vision
-    // .annotateImage(request)
-    // .then(response => {
-    //   console.log("response:", response);
-    //   reply.response = response;
-    //   res.writeHead(200, { "Content-Type": "application/json" });
-    //   return res.write(reply);
-    // })
-    // .catch(err => {
-    //   console.error("Error:", err);
-    //   reply.response = err;
-    //   res.writeHead(200, { "Content-Type": "application/json" });
-    //   return res.write(reply);
-    // });
-  //});
-
+  req.on("end", function() {
+    // const imgBuffer = new Buffer(imageSrc, "binary").toString("base64");
+    fs.writeFile("output2.txt", imageSrc, function(err) {
+      if (err) {
+        return console.log(err);
+      }
+      console.log("The file was saved!");
+    });
+  });
 });
+
 router.use(function(req, res) {
   res.writeHead(404, { "Content-Type": "text/html" });
   res.end("404: URL Not Found.");
