@@ -5,7 +5,14 @@ block content
   p Welcome to #{title}
   form(method="post", enctype="multipart/form-data")
     div.form-group
-      label(for="flower-picture") ADD A PICTURE OF YOURSELF
+      label(for="flower-picture") UPLOAD A PICTURE
       input.form-control-file(type="file" name="flower" required)
     div.form-group
-      button.btn.btn-large.btn-primary(type="submit") Upload Picture
+      button.btn.btn-large.btn-primary(type="submit") SEE RESULTS
+
+  if labels
+    div
+      img(src="data:image/png;base64, " + imgSrc)
+      ul
+        for label in labels
+          li= label.description

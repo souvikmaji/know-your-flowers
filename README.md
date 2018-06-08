@@ -4,8 +4,8 @@ Post a flower image, and see what type of a flower it is.
 
 ## Start Server:
 
-Use `export GOOGLE_APPLICATION_CREDENTIALS='path/to/google/creds'` to locate google cloud credential file required by `@google-cloud/vision`.
+Use `export GOOGLE_APPLICATION_CREDENTIALS="[PATH]"` to locate google cloud credential file required by `@google-cloud/vision`.
 
 `npm start`
 
-Visit `localhost:8080`
+Visit `localhost:3000`
