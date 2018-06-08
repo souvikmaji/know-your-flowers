@@ -3,3 +3,9 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  form(method="post", enctype="multipart/form-data")
+    div.form-group
+      label(for="flower-picture") ADD A PICTURE OF YOURSELF
+      input.form-control-file(type="file" name="flower" required)
+    div.form-group
+      button.btn.btn-large.btn-primary(type="submit") Upload Picture
