@@ -13,10 +13,9 @@ block content
     if imgSrc
       img(src="data:image/png;base64, " + imgSrc)
 
-    if labels
-      ul
-        for label in labels
-          li= label.description
+    if label
+      div
+        p #{label.description}
 
     if notFlower
       p ARE U SURE THE IMAGE CONTAINS A FLOWER?

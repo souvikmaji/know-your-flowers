@@ -8,6 +8,11 @@ router.get("/", function(req, res, next) {
   res.render("index");
 });
 
+function getFlowerName(labels) {
+  labels = labels || [];
+  return labels[Math.floor(Math.random() * labels.length)];
+}
+
 /* POST to home page. */
 router.post("/", multer().single("flower"), function(req, res, next) {
   var client = new vision.ImageAnnotatorClient();
@@ -27,7 +32,7 @@ router.post("/", multer().single("flower"), function(req, res, next) {
       if (isFlower) {
         res.render("index", {
           imgSrc: img.toString("base64"),
-          labels: labels
+          label: getFlowerName(labels)
         });
       } else {
         res.render("index", {
