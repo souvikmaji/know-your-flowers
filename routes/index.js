@@ -5,7 +5,7 @@ var multer = require("multer");
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
-  res.render("index", { title: "Express" });
+  res.render("index");
 });
 
 /* POST to home page. */
@@ -16,14 +16,28 @@ router.post("/", multer().single("flower"), function(req, res, next) {
     .labelDetection(img)
     .then(results => {
       var labels = results[0].labelAnnotations;
-      res.render("index", {
-        title: "express",
-        imgSrc: img.toString("base64"),
-        labels: labels
+      var isFlower = false;
+      labels.forEach(label => {
+        var desc = label.description;
+        if (desc === "flower" || desc === "flowers") {
+          isFlower = true;
+          return;
+        }
       });
+      if (isFlower) {
+        res.render("index", {
+          imgSrc: img.toString("base64"),
+          labels: labels
+        });
+      } else {
+        res.render("index", {
+          imgSrc: img.toString("base64"),
+          notFlower: true
+        });
+      }
     })
     .catch(err => {
-      res.render("index", { title: "Express" });
+      res.render("index");
       console.error("ERROR:", err);
     });
 });
