@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var vision = require("@google-cloud/vision");
 var multer = require("multer");
+var request = require("request");
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
@@ -10,7 +11,8 @@ router.get("/", function(req, res, next) {
 
 function getFlowerName(labels) {
   labels = labels || [];
-  return labels[Math.floor(Math.random() * labels.length)];
+  const index = Math.floor(Math.random() * labels.length);
+  return labels[index];
 }
 
 /* POST to home page. */
@@ -30,14 +32,24 @@ router.post("/", multer().single("flower"), function(req, res, next) {
         }
       });
       if (isFlower) {
-        res.render("index", {
-          imgSrc: img.toString("base64"),
-          label: getFlowerName(labels)
-        });
+        const flowerName = getFlowerName(labels).description;
+        request.get(
+          "https://en.wikipedia.org/api/rest_v1/page/summary/" + flowerName,
+          (err, response, body) => {
+            if (err) {
+              throw err;
+            } else {
+              res.render("index", {
+                imgSrc: img.toString("base64"),
+                label: flowerName,
+                wikiURL: JSON.parse(body).content_urls.desktop.page
+              });
+            }
+          }
+        );
       } else {
         res.render("index", {
-          imgSrc: img.toString("base64"),
-          notFlower: true
+          imgSrc: img.toString("base64")
         });
       }
     })

@@ -15,7 +15,7 @@ block content
 
     if label
       div
-        p #{label.description}
-
-    if notFlower
+        p #{label}
+        iframe(src= wikiURL)
+    else
       p ARE U SURE THE IMAGE CONTAINS A FLOWER?
