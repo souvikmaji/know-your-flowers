@@ -39,11 +39,21 @@ router.post("/", multer().single("flower"), function(req, res, next) {
             if (err) {
               throw err;
             } else {
-              res.render("index", {
-                imgSrc: img.toString("base64"),
-                label: flowerName,
-                wikiURL: JSON.parse(body).content_urls.desktop.page
-              });
+              body = JSON.parse(body);
+              if (body.type.includes("errors")) {
+                res.render("index", {
+                  imgSrc: img.toString("base64"),
+                  label:
+                    "Error occured while identifying flower. Please try again after some time"
+                });
+              } else {
+                res.render("index", {
+                  imgSrc: img.toString("base64"),
+                  label: flowerName,
+                  wikiURL: body.content_urls.desktop.page,
+                  wikiExtract: body.extract
+                });
+              }
             }
           }
         );

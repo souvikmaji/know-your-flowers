@@ -1,21 +1,27 @@
 extends layout
 
 block content
-  h1 KNOW YOUR FLOWER
+  h1.text-center.display-2.text-success KNOW YOUR FLOWER
   form(method="post", enctype="multipart/form-data")
     div.form-group
-      label(for="flower-picture") UPLOAD A PICTURE
-      input.form-control-file(type="file" name="flower" required)
+      div.custom-file
+        input.custom-file-input(type="file" name="flower" required)
+        label.custom-file-label(for="flower-picture")
     div.form-group
-      button.btn.btn-large.btn-primary(type="submit") SEE RESULTS
+      button.btn.btn-block.btn-lg.btn-primary(type="submit") SEE RESULTS
 
-  div.result
+  div.result.row
     if imgSrc
-      img(src="data:image/png;base64, " + imgSrc)
+      div.col-md
+        figure.figure.mx-auto.d-block
+          img.figure-img.img-fluid.mx-auto.d-block.rounded.shadow-lg(src="data:image/png;base64, " + imgSrc, alt="something wrong with the file uploaded")
+          figcaption.figure-caption.text-center.text-uppercase
+            if label
+              div
+                p #{label}
+            else
+              p ARE U SURE THE IMAGE CONTAINS A FLOWER?
 
-    if label
-      div
-        p #{label}
-        iframe(src= wikiURL)
-    else
-      p ARE U SURE THE IMAGE CONTAINS A FLOWER?
+      if wikiURL
+        div.col-md.d-flex.align-items-center
+          p #{wikiExtract}
