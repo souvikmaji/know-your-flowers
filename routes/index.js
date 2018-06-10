@@ -49,7 +49,7 @@ router.post("/", multer().single("flower"), function(req, res, next) {
               } else {
                 res.render("index", {
                   imgSrc: img.toString("base64"),
-                  label: flowerName,
+                  label: flowerName.toUpperCase(),
                   wikiURL: body.content_urls.desktop.page,
                   wikiExtract: body.extract
                 });

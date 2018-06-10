@@ -4,7 +4,7 @@ Post a flower image, and see what type of a flower it is.
 
 ## Start Server
 
-Use `export GOOGLE_APPLICATION_CREDENTIALS="[PATH]"` to locate google cloud credential file required by `@google-cloud/vision`.
+Create a project on google cloud with vision API enabled and use `export GOOGLE_APPLICATION_CREDENTIALS="[PATH]"` to locate google cloud credential file required by `@google-cloud/vision`.
 
 To start the server at `localhost:3000` with debugging mode on use:
 

@@ -10,12 +10,12 @@ block content
     div.form-group
       button.btn.btn-block.btn-lg.btn-primary(type="submit") SEE RESULTS
 
-  div.result.row
+  div.row.pt-3
     if imgSrc
       div.col-md
         figure.figure.mx-auto.d-block
           img.figure-img.img-fluid.mx-auto.d-block.rounded.shadow-lg(src="data:image/png;base64, " + imgSrc, alt="something wrong with the file uploaded")
-          figcaption.figure-caption.text-center.text-uppercase
+          figcaption.figure-caption.text-center
             if label
               div
                 p #{label}
@@ -23,5 +23,6 @@ block content
               p ARE U SURE THE IMAGE CONTAINS A FLOWER?
 
       if wikiURL
-        div.col-md.d-flex.align-items-center
-          p #{wikiExtract}
+        div.col-md.d-flex.flex-column.justify-content-center
+          dt.text-center #{label}
+          dd.text-justify #{wikiExtract} <a href=#{wikiURL}> [#{wikiURL}]</a>
