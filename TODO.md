@@ -1,5 +1,5 @@
 # TODO
 
-- color pallet & google fonts.
+- color pallet (background?).
 - **FIND FLOWER NAME FROM LIST OF TAGS**.
 - refactor post method.
