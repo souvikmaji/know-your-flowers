@@ -1,5 +1,4 @@
 # TODO
 
-- color pallet (background?).
+- background imgae.
 - **FIND FLOWER NAME FROM LIST OF TAGS**.
-- refactor post method.

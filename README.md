@@ -14,4 +14,4 @@ DEBUG=app:* npm start
 
 --------------------------------------------------------------------------------
 
-Or watch it live at: <https://know-your-flower.appspot.com/>
+Or watch it live at: [https://know-your-flower.appspot.com](https://know-your-flower.appspot.com/){:target="_blank"}

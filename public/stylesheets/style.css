@@ -1,8 +1,33 @@
 body {
   font-family: "Slabo 27px", serif;
   padding: 50px;
+  background-color: #fbfbfb;
+  color: #093333;
 }
 
 a {
-  color: #00b7ff;
+  color: #116060;
+}
+
+a:visited,
+a:hover {
+  color: #007f3f;
+}
+
+h1 {
+  color: #64c488;
+}
+
+.btn-primary {
+  background-color: #64c488;
+  border-color: inherit;
+}
+
+.btn-primary:hover {
+  background-color: #468960;
+  border-color: inherit;
+}
+
+.fa-github {
+  color: #1160cf;
 }

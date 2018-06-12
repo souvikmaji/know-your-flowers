@@ -1,11 +1,11 @@
 extends layout
 
 block content
-  h1.text-center.display-2.text-success KNOW YOUR FLOWER
+  h1.text-center.display-2 KNOW YOUR FLOWER
   form(method="post", enctype="multipart/form-data")
-    div.form-group
+    div.form-group.active
       div.custom-file
-        input.custom-file-input(type="file" name="flower" required)
+        input.custom-file-input(type="file" name="flower" aria-pressed="true" required)
         label.custom-file-label(for="flower-picture")
     div.form-group
       button.btn.btn-block.btn-lg.btn-primary(type="submit") SEE RESULTS
@@ -14,7 +14,7 @@ block content
     if imgSrc
       div.col-md
         figure.figure.mx-auto.d-block
-          img.figure-img.img-fluid.mx-auto.d-block.rounded.shadow-lg(src="data:image/png;base64, " + imgSrc, alt="something wrong with the file uploaded")
+          img.figure-img.img-fluid.mx-auto.d-block.rounded.shadow-lg(src="data:image/png;base64, " + imgSrc alt="something wrong with the file uploaded")
           figcaption.figure-caption.text-center
             if label
               div
