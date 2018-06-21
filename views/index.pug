@@ -16,13 +16,14 @@ block content
         figure.figure.mx-auto.d-block
           img.figure-img.img-fluid.mx-auto.d-block.rounded.shadow-lg(src="data:image/png;base64, " + imgSrc alt="something wrong with the file uploaded")
           figcaption.figure-caption.text-center
-            if label
+            if err
+              div
+                p #{err}
+            else
               div
                 p #{label}
-            else
-              p ARE U SURE THE IMAGE CONTAINS A FLOWER?
 
       if wikiURL
         div.col-md.d-flex.flex-column.justify-content-center
           dt.text-center #{label}
-          dd.text-justify #{wikiExtract} <a href=#{wikiURL}> [#{wikiURL}]</a>
+          dd.text-justify #{wikiExtract} <a href=#{wikiURL} target="blank"> [#{wikiURL}]</a>
